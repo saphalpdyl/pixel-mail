@@ -1,6 +1,8 @@
 ☐ Server Creation @started(23-03-08 21:40)
     ✔ DB Connection @done(23-03-08 21:41)
-    ☐ API End point
+    ✔ Create schema @done(23-03-08 22:37)
+    ✔ API End point (GET) @done(23-03-08 23:14)
+    ☐ API End point (POST)
 
 ☐ Client Creation 
     ☐ UI

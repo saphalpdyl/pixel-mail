@@ -1,6 +1,6 @@
 import { createConnection } from "mysql";
-import express from "express";
-import dotenv from "dotenv";
+import express, { response } from "express";
+import dotenv, { parse } from "dotenv";
 
 const app = express();
 dotenv.config();
@@ -17,10 +17,23 @@ if (!conn) throw "Failed to connect to DB";
 
 conn.connect((err) => {
 	if (err) throw err;
+});
 
-	const sql = "SELECT * FROM users";
-	conn.query(sql, (err, result) => {
+// GET all the current emails
+app.get("/", (_, res) => {
+	const sql_query_get_all_email = "SELECT * FROM emails";
+	conn.query(sql_query_get_all_email, (err, result) => {
 		if (err) throw err;
-		console.log("Result : ", result[0]);
+		const response_rows = [];
+		result.forEach((row) => {
+			const parsedRow = JSON.parse(JSON.stringify(row)); // Parsing the tuple to JSON
+			response_rows.push(parsedRow);
+		});
+
+		res.send(response_rows);
 	});
+});
+
+app.listen(8080, () => {
+	console.log("Listening on port : 8080");
 });
