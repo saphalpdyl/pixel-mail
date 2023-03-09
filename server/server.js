@@ -58,22 +58,28 @@ app.post("/", (_, res) => {
 app.post("/post", (req, res) => {
 	const sql_post = `INSERT INTO emails(sender , sender_email , content) VALUES ('${req.body.sender}' , '${req.body.sender_email}' , '${req.body.content}');`;
 
-	try {
-		conn.query(sql_post, (err, result) => {
-			if (err) throw err;
-
-			res.status(200);
+	conn.query(sql_post, (err, result) => {
+		if (err) {
+			res.status(400);
 			res.header({
-				"Content-Type": "application/json",
+				"Content-Type": "application/text",
 			});
 			res.send({
-				emailId: result.insertId,
+				hasError: true,
+				code: err.code,
 			});
+			return;
+		}
+
+		res.status(200);
+		res.header({
+			"Content-Type": "application/json",
 		});
-	} catch (err) {
-		res.status(400);
-		res.send("Failed to post email : " + err);
-	}
+		res.send({
+			hasError: false,
+			emailId: result.insertId,
+		});
+	});
 });
 
 app.listen(8080, () => {

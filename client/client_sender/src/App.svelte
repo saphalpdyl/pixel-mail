@@ -18,8 +18,8 @@
 					body: JSON.stringify(body),
 				});
 
-				const data = await response.json();
-				console.log(data);
+				const result = await response.json();
+				if (result.hasError) throw result;
 			} catch (e) {
 				console.error("Error in request to server : ", e);
 				return;
@@ -47,7 +47,7 @@
 
 		<div>
 			<label for="content">Content</label>
-			<input name="content" bind:value={content} />
+			<textarea name="content" bind:value={content} />
 		</div>
 
 		<input type="submit" value="Send" />
@@ -59,6 +59,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
+		width: 50rem;
 
 		border: 1px solid #ffffff66;
 		padding: 5rem 5rem;
@@ -80,5 +81,44 @@
 		display: flex;
 		flex-direction: column;
 		align-items: start;
+	}
+
+	input {
+		width: 100%;
+		height: 1.5rem;
+		outline: transparent;
+		border: none;
+
+		font-family: monospace;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+
+	textarea {
+		resize: none;
+		width: 100%;
+		height: 30vh;
+	}
+
+	input[type="submit"] {
+		background-color: #ffffff66;
+		padding: 0.5rem;
+		height: auto;
+		width: 50%;
+
+		align-self: center;
+		border-radius: 5px;
+		cursor: pointer;
+
+		font-family: monospace;
+		font-size: 20px;
+		font-weight: bold;
+		letter-spacing: 5px;
+
+		transition: background-color 100ms;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #ffffff88;
 	}
 </style>
