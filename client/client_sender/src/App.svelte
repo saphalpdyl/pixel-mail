@@ -1,45 +1,84 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+	let sender, sender_email, content;
+
+	const handleSubmit = async () => {
+		if (sender !== "" && sender_email !== "" && content !== "") {
+			const body = {
+				sender,
+				sender_email,
+				content,
+			};
+
+			try {
+				const response = await fetch("http://localhost:8080/post", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(body),
+				});
+
+				const data = await response.json();
+				console.log(data);
+			} catch (e) {
+				console.error("Error in request to server : ", e);
+				return;
+			}
+
+			sender = "";
+			sender_email = "";
+			content = "";
+		}
+	};
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+	<form method="post" on:submit|preventDefault={handleSubmit}>
+		<h1>SEND</h1>
+		<div>
+			<label for="sender">Name</label>
+			<input name="sender" type="text" bind:value={sender} />
+		</div>
 
-  <div class="card">
-    <Counter />
-  </div>
+		<div>
+			<label for="sender_email">Email</label>
+			<input name="sender_email" type="email" bind:value={sender_email} />
+		</div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+		<div>
+			<label for="content">Content</label>
+			<input name="content" bind:value={content} />
+		</div>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+		<input type="submit" value="Send" />
+	</form>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+
+		border: 1px solid #ffffff66;
+		padding: 5rem 5rem;
+		border-radius: 10px;
+	}
+
+	h1 {
+		letter-spacing: 12px;
+	}
+
+	label {
+		font-size: 16px;
+		font-family: "JetBrains Mono";
+		font-weight: bold;
+		letter-spacing: 4px;
+	}
+
+	form > div {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+	}
 </style>

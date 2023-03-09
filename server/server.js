@@ -2,6 +2,7 @@ import { createConnection } from "mysql";
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const app = express();
 dotenv.config({ path: ".env.development" });
@@ -9,6 +10,13 @@ dotenv.config({ path: ".env.development" });
 // Required to parse JSON body in post request
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+	cors({
+		origin: "*",
+		methods: ["GET", "POST"],
+		optionsSuccessStatus: 200,
+	})
+);
 
 // Create a Database connection to MariaDB Database at port 3060
 const conn = createConnection({

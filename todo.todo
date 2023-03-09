@@ -1,10 +1,11 @@
-☐ Server Creation @started(23-03-08 21:40)
+✔ Server Creation @started(23-03-08 21:40) @done(23-03-09 07:10) @lasted(9h30m21s)
     ✔ DB Connection @done(23-03-08 21:41)
     ✔ Create schema @done(23-03-08 22:37)
     ✔ API End point (GET) @done(23-03-08 23:14)
-    ☐ API End point (POST)
+    ✔ API End point (POST) @done(23-03-09 07:10)
 
 ☐ Client Creation 
-    ☐ UI
+    ✔ UI (Sender) @done(23-03-09 08:00)
+    ☐ UI (Reciever)
     ☐ GET the emails
     ☐ POST the emails
