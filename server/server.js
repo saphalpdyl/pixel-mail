@@ -1,9 +1,9 @@
 import { createConnection } from "mysql";
-import express, { response } from "express";
-import dotenv, { parse } from "dotenv";
+import express from "express";
+import dotenv from "dotenv";
 
 const app = express();
-dotenv.config();
+dotenv.config({ path: ".env.development" });
 
 // Create a Database connection to MariaDB Database at port 3060
 const conn = createConnection({
