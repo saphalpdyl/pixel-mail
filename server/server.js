@@ -1,9 +1,14 @@
 import { createConnection } from "mysql";
 import express from "express";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config({ path: ".env.development" });
+
+// Required to parse JSON body in post request
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Create a Database connection to MariaDB Database at port 3060
 const conn = createConnection({
@@ -30,8 +35,37 @@ app.get("/", (_, res) => {
 			response_rows.push(parsedRow);
 		});
 
+		res.status(200);
+		res.contentType("application/json");
 		res.send(response_rows);
 	});
+});
+
+// Prevent users from posting in '/'
+app.post("/", (_, res) => {
+	res.send("This end point cannot be used for POST methods");
+});
+
+// POST emails to database
+app.post("/post", (req, res) => {
+	const sql_post = `INSERT INTO emails(sender , sender_email , content) VALUES ('${req.body.sender}' , '${req.body.sender_email}' , '${req.body.content}');`;
+
+	try {
+		conn.query(sql_post, (err, result) => {
+			if (err) throw err;
+
+			res.status(200);
+			res.header({
+				"Content-Type": "application/json",
+			});
+			res.send({
+				emailId: result.insertId,
+			});
+		});
+	} catch (err) {
+		res.status(400);
+		res.send("Failed to post email : " + err);
+	}
 });
 
 app.listen(8080, () => {
