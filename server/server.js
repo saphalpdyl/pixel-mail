@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const app = express();
-dotenv.config({path: '.env.development'});
+dotenv.config({path: '.env.development'});      
 
 // Required to parse JSON body in post request
 app.use(bodyParser.urlencoded({extended: false}));
