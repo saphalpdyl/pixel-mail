@@ -1,5 +1,8 @@
 # GMAIL "CLONE" USING SQL DATABASE
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![](https://img.shields.io/github/actions/workflow/status/saphalpdyl/Gmail_Clone-using-SQL/lint.yml)
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -15,4 +18,3 @@ To run this project, you will need to add the following environment variables to
 
 **Server:** Node , Express , MySQL
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
