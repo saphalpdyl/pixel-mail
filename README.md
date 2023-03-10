@@ -12,6 +12,7 @@ To run this project, you will need to add the following environment variables to
 ## Tech Stack
 
 **Client:** React , Svelte
+
 **Server:** Node , Express , MySQL
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
