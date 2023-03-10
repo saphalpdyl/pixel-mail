@@ -1,0 +1,13 @@
+{
+	"name": "email_clone",
+	"version": "0.0.1",
+	"description": "Fake Email Clone with JS , MySQL and Node",
+	"repository": "https://github.com/saphalpdyl/Gmail_Clone-using-SQL.git",
+	"author": "Saphal Poudyal",
+	"scripts": {
+		"install": "cd ./server/ && yarn install && cd ../client/client_sender && yarn install && cd ../client_main/ && yarn install",
+		"test": "cd ./server/ && yarn run test && cd ../client/client_sender && yarn run test && cd ../client_main/ && yarn run test"
+	},
+	"license": "MIT",
+	"private": "true"
+}
