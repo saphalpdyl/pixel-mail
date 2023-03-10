@@ -12,14 +12,10 @@ jobs:
   lint:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: "./client/client_main"
-
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
+      - name: Install all dependencies
         run: yarn install
 
-      - name: Lint the codebase
-        run: yarn eslint .
+      - name: Lint all projects
+        run: yarn run lint
