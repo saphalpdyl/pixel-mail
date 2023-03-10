@@ -33,6 +33,7 @@ conn.connect((err) => {
 });
 
 // GET all the current emails
+// * @saphalpdyl RESPONSE TYPE : List([...]) of all emails as json
 app.get("/", (_, res) => {
 	const sql_query_get_all_email = "SELECT * FROM emails";
 	conn.query(sql_query_get_all_email, (err, result) => {
@@ -55,6 +56,12 @@ app.post("/", (_, res) => {
 });
 
 // POST emails to database
+/**
+ * * @saphalpdyl RESPONSE {
+ * *	hasError : boolean ,
+ * *	emailId : number (from the sql result)
+ * *}
+ */
 app.post("/post", (req, res) => {
 	const sql_post = `INSERT INTO emails(sender , sender_email , content) VALUES ('${req.body.sender}' , '${req.body.sender_email}' , '${req.body.content}');`;
 
