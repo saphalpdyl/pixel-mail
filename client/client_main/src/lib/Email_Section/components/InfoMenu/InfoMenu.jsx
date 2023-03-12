@@ -17,7 +17,7 @@ function InfoMenu({menuPos, visible, handleDelete}) {
           <ul className="info_menu_list">
             <div className="info_menu_list_item">
               <span>Delete</span>
-              <div className="info_menu_list_item_img_cont center">
+              <div className="info_menu_list_item_img_container center">
                 <img
                   src="../../../public/delete_icon.png"
                   height={16}

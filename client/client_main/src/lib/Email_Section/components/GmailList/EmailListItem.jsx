@@ -1,5 +1,5 @@
-import formatDate from '../utils/dateFormatter.js';
-import settingsContext from '../../contexts/SettingsContext.js';
+import formatDate from '../../../utils/dateFormatter.js';
+import settingsContext from '../../../../contexts/SettingsContext.js';
 import {useContext} from 'react';
 
 const EmailListItem = ({
@@ -22,7 +22,11 @@ const EmailListItem = ({
         <div className="metadata_container">
           <div className="email_sender_info">
             <span className="email_sender_name">{email.sender}</span>
-            <div className="info_icon_container" onClick={handleInfoClick}>
+            <div
+              className="info_icon_container"
+              title="More"
+              onClick={handleInfoClick}
+            >
               <img
                 src="../../../public/send_icon.png"
                 height={16}
