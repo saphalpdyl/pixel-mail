@@ -1,28 +1,19 @@
-import {useEffect, useState} from 'react';
+import {useContext} from 'react';
 import EmailList from './lib/GmailList/EmailList';
-
+import emailContext from './contexts/EmailContext';
 function App() {
-  const [emails, setEmails] = useState([]);
-
-  useEffect(() => {
-    const getEmails = async () => {
-      const response = await fetch('http://localhost:8080/', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const emails = await response.json();
-      setEmails(emails);
-    };
-
-    getEmails(); // Running the getEmails function to fetch emails from the API
-  }, []);
+  const {emails} = useContext(emailContext);
 
   return (
     <div className="App">
-      <EmailList emails={emails} />
+      <div className="nav"></div>
+      <div className="app_main">
+        <section className="app_section_emails">
+          <span className="app_section_emails_title">Your Emails </span>
+          {emails ? <EmailList emails={emails} /> : <span>Loading...</span>}
+        </section>
+        <section className="app_section_options"></section>
+      </div>
     </div>
   );
 }
