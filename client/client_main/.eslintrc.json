@@ -3,10 +3,27 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "../../.eslintrc.json"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "../../.eslintrc.json"
+  ],
   "plugins": ["react"],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "ignorePatterns": ["node_modules/", "build/", "dist/", "*.test.js"],
+  "overrides": [
+    {
+      "files": ["*.jsx", "*.tsx"],
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      }
+    }
+  ]
 }

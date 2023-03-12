@@ -19,3 +19,11 @@ jobs:
 
       - name: Lint all projects
         run: yarn run lint
+
+      - name: "Checking for Linting errors ..."
+        run: "No Linting errors found , commiting ..."
+        if: ${{ success() }}
+
+      - name: Fail for lint errors
+        run: exit 1
+        if: ${{ failure() }}
