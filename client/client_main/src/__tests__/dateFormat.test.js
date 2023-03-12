@@ -15,7 +15,9 @@ const options2 = {
 
 describe('Test date formatter', () => {
   test('Format to English', () => {
-    expect(formatDate(testDate, options1)).toBe('3/8/2023, 1:36 PM');
+    expect(formatDate(testDate, options1).replace(/\u200A/g, ' ')).toBe(
+      '3/8/2023, 1:36 PM'
+    );
   });
 
   test('Format to Nepali', () => {
