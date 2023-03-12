@@ -1,0 +1,38 @@
+.app_section_emails {
+  flex: 8;
+  padding: 3em 5em;
+  overflow-y: auto;
+}
+
+.app_section_emails_title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 24px;
+}
+
+.app_section_emails_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refresh_icon_container {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  outline: transparent;
+  border: none;
+  user-select: none;
+  -moz-user-select: -moz-none;
+
+  transition: 250ms background-color;
+}
+
+.refresh_icon_container:active {
+  background-color: var(--border-light);
+}
