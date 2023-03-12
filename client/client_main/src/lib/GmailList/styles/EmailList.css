@@ -72,6 +72,9 @@
 
 /* Div that encapsulates the actual <img /> */
 .info_icon_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 

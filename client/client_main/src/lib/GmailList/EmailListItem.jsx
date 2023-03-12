@@ -2,11 +2,19 @@ import formatDate from '../utils/dateFormatter.js';
 import settingsContext from '../../contexts/SettingsContext.js';
 import {useContext} from 'react';
 
-const EmailListItem = ({email}) => {
+const EmailListItem = ({
+  email,
+  handleInfoClick,
+  emailId,
+  setLastClickedEmailId,
+}) => {
   const {settings} = useContext(settingsContext);
 
   return (
-    <div className="email_list_item ">
+    <div
+      onClick={() => setLastClickedEmailId(emailId)}
+      className="email_list_item "
+    >
       <div className="profile_picture_container ">
         <div className="profile_pic"></div>
       </div>
@@ -14,7 +22,7 @@ const EmailListItem = ({email}) => {
         <div className="metadata_container">
           <div className="email_sender_info">
             <span className="email_sender_name">{email.sender}</span>
-            <div className="info_icon_container">
+            <div className="info_icon_container" onClick={handleInfoClick}>
               <img
                 src="../../../public/send_icon.png"
                 height={16}
