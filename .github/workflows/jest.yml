@@ -1,4 +1,4 @@
-name: lint
+name: Testing
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +22,5 @@ jobs:
         with:
           node-version: 16
 
-      - name: Lint all projects
-        run: yarn run lint
+      - name: Testing with jest@29.5.0
+        run: yarn run test
