@@ -17,5 +17,10 @@ jobs:
       - name: Install all dependencies
         run: yarn install
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
       - name: Lint all projects
         run: yarn run lint
