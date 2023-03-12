@@ -68,11 +68,13 @@ app.post('/post', (req, res) => {
    '${req.body.content}');`;
 
   conn.query(sqlPost, (err, result) => {
+    res.header({
+      'Content-Type': 'application/json',
+    });
+
     if (err) {
       res.status(400);
-      res.header({
-        'Content-Type': 'application/text',
-      });
+
       res.send({
         hasError: true,
         code: err.code,
@@ -81,12 +83,41 @@ app.post('/post', (req, res) => {
     }
 
     res.status(200);
-    res.header({
-      'Content-Type': 'application/json',
-    });
+
     res.send({
       hasError: false,
       emailId: result.insertId,
+    });
+  });
+});
+
+// DELETE emails from database
+/**
+ * * @saphalpdyl RESPONSE {
+ * * hasError : boolean ,
+ * * code ?: string
+ * *}
+ */
+app.delete('/delete/:postid', (req, res) => {
+  const sqlDeleteQuery = `DELETE FROM emails WHERE id=${req.params.postid}`;
+
+  conn.query(sqlDeleteQuery, (err, result) => {
+    res.header({
+      'Content-Type': 'application/json',
+    });
+
+    if (err) {
+      res.status(400);
+      res.send({
+        hasError: true,
+        code: err.code,
+      });
+      return;
+    }
+
+    res.status(200);
+    res.send({
+      hasError: false,
     });
   });
 });
