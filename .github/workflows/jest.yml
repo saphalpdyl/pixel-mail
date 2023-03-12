@@ -1,0 +1,21 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install all dependencies
+        run: yarn install
+
+      - name: Testing with jest@29.5.0
+        run: yarn run test
