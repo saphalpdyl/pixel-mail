@@ -1,4 +1,6 @@
 import EmailListItem from './EmailListItem';
+import './styles/EmailList.css';
+import './styles/EmailListScrollBar.css';
 
 const EmailList = ({emails}) => {
   return (

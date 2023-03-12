@@ -11,7 +11,8 @@
   "plugins": ["react"],
   "rules": {
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "max-len": "off"
   },
   "ignorePatterns": ["node_modules/", "build/", "dist/", "*.test.js"],
   "overrides": [

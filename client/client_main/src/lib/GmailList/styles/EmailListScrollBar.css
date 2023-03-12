@@ -1,0 +1,14 @@
+/* Only works for chrome web-kits (Chromium browsers) */
+
+::-webkit-scrollbar {
+  background-color: var(--border-light);
+  width: 0.8rem;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00000077;
+  width: 10px;
+
+  border-radius: 5px;
+}

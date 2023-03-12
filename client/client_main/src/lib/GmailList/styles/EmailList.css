@@ -1,8 +1,100 @@
-/*
+:root {
+  --email-border-width: 1px;
+  --email-item-height: 5.2rem;
+  --email-item-padding: 0.8rem;
+  --email-item-margin: 2rem 0rem;
+  --email-item-gap: 0.3rem;
 
-font-family: 'Dancing Script', cursive;
-font-family: 'Phudu', cursive;
-font-family: 'Rubik Iso', cursive;
-font-family: 'Space Grotesk', sans-serif;
+  --profile-pic-size: 32px;
+}
 
-*/
+/* Whole Item body */
+.email_list_item {
+  border: var(--email-border-width) solid var(--border-light);
+  border-radius: 10px;
+
+  display: flex;
+  background-color: rgba(234, 234, 234, 25%);
+
+  margin: var(--email-item-margin);
+  padding: var(--email-item-padding) 0rem;
+  height: var(--email-item-height);
+  overflow: hidden;
+}
+
+/* Div surrounding Profile picture */
+.profile_picture_container {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Actual Profile Picture */
+.profile_pic {
+  background-color: var(--text-gray-800);
+  height: var(--profile-pic-size);
+  width: var(--profile-pic-size);
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+/* Div Surrounding everything except profile pic(on the right) */
+.email_main_container {
+  flex: 20;
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--email-item-gap);
+  padding-right: 1rem;
+}
+
+/* Div containing Sent data , names etc.. */
+.metadata_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Div encapsulating the sender name and more icon */
+.email_sender_info {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Sender's name */
+.email_sender_name {
+  font-family: "Gemunu Libre", sans-serif;
+  font-size: var(--font-title);
+}
+
+/* Div that encapsulates the actual <img /> */
+.info_icon_container {
+  cursor: pointer;
+}
+
+/* Timestamp for the email sent (on the right) */
+.email_sent_at {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--text-gray-200);
+  font-size: var(--font-base);
+}
+
+/* Div encapsulating the content */
+.content_container {
+  overflow: hidden;
+  max-height: calc(100% - 12px);
+}
+
+/* Actual Content of the mail */
+.email_content {
+  font-family: "Inter", sans-serif;
+  letter-spacing: 1px;
+  color: var(--text-gray-800);
+  font-size: var(--font-base);
+
+  display: flex;
+  height: 100%;
+}

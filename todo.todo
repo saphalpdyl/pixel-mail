@@ -7,5 +7,5 @@
 ☐ Client Creation 
     ✔ UI (Sender) @done(23-03-09 08:00)
     ☐ UI (Reciever)
-    ☐ GET the emails
+    ✔ GET the emails @done(23-03-12 17:25)
     ☐ POST the emails
