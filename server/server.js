@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(
     cors({
       origin: '*',
+      credentials: true,
       methods: ['GET', 'POST', 'DELETE'],
       optionsSuccessStatus: 200,
     }),
