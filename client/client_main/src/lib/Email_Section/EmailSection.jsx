@@ -1,22 +1,18 @@
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 
 import EmailList from './components/GmailList/EmailList';
 import emailContext from '../../contexts/EmailContext';
+import infoMenuContext from '../../contexts/InfoMenuContext';
+
 import './EmailSection.css';
 
 function EmailSection() {
   const {emails, refreshEmails} = useContext(emailContext);
-  const [lastClickedPos, setLastClickedPos] = useState({x: 0, y: 0});
-  const [visible, setVisible] = useState(false);
 
-  const handleMouseMove = (event) => {
-    if (
-      Math.abs(lastClickedPos.x - event.clientX) > 100 ||
-      Math.abs(lastClickedPos.y - event.clientY) > 100
-    ) {
-      setVisible(false);
-    }
-  };
+  const {positions, handleMouseMove, visibility} =
+    useContext(infoMenuContext);
+  const {visible, setVisible} = visibility;
+  const {lastClickedPos, setLastClickedPos} = positions;
 
   return (
     <section onMouseMove={handleMouseMove} className="app_section_emails">
