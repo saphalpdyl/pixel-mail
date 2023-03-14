@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+// Controllers
+import {getAllEmails} from './src/controllers/emailController.js';
+
 const app = express();
 dotenv.config({path: '.env.development'});
 
@@ -26,34 +29,13 @@ const conn = createConnection({
   database: process.env.DB_NAME,
 });
 
-if (!conn) throw error('Failed to connect to DB');
+if (!conn) throw Error('Failed to connect to DB');
 
 conn.connect((err) => {
   if (err) throw err;
 });
 
-// GET all the current emails
-// * @saphalpdyl RESPONSE TYPE : List([...]) of all emails as json
-app.get('/', (_, res) => {
-  const sqlGetEmailQuery = 'SELECT * FROM emails';
-  conn.query(sqlGetEmailQuery, (err, result) => {
-    if (err) throw err;
-    const responseRows = [];
-    result.forEach((row) => {
-      const parsedRow = JSON.parse(JSON.stringify(row)); // Parsing to JSON
-      responseRows.push(parsedRow);
-    });
-
-    res.status(200);
-    res.contentType('application/json');
-    res.send(responseRows);
-  });
-});
-
-// Prevent users from posting in '/'
-app.post('/', (_, res) => {
-  res.send('This end point cannot be used for POST methods');
-});
+app.get('/', (req, res) => getAllEmails(req, res, conn));
 
 // POST emails to database
 /**
