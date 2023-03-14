@@ -5,12 +5,15 @@ import './index.css';
 
 import SettingsProvider from './providers/SettingsProvider';
 import EmailProvider from './providers/EmailProvider';
+import InfoMenuProvider from './providers/infoMenuProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
       <SettingsProvider>
         <EmailProvider>
-          <App />
+          <InfoMenuProvider>
+            <App />
+          </InfoMenuProvider>
         </EmailProvider>
       </SettingsProvider>
     </React.StrictMode>,
