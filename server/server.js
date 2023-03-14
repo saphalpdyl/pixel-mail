@@ -5,7 +5,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 // Controllers
-import {getAllEmails, postEmail} from './src/controllers/emailController.js';
+import {
+  deleteEmail,
+  getAllEmails,
+  postEmail,
+} from './src/controllers/emailController.js';
 
 const app = express();
 dotenv.config({path: '.env.development'});
@@ -37,37 +41,7 @@ conn.connect((err) => {
 
 app.get('/', (req, res) => getAllEmails(req, res, conn));
 app.post('/post', (req, res) => postEmail(req, res, conn));
-
-// DELETE emails from database
-/**
- * * @saphalpdyl RESPONSE {
- * * hasError : boolean ,
- * * code ?: string
- * *}
- */
-app.delete('/delete/:postid', (req, res) => {
-  const sqlDeleteQuery = `DELETE FROM emails WHERE id=${req.params.postid}`;
-
-  conn.query(sqlDeleteQuery, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
-
-    if (err) {
-      res.status(400);
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-    res.send({
-      hasError: false,
-    });
-  });
-});
+app.delete('/delete/:postid', (req, res) => deleteEmail(req, res, conn));
 
 app.listen(8080, () => {
   console.log('Listening on port : 8080');
