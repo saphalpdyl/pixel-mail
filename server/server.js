@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 // Controllers
-import {getAllEmails} from './src/controllers/emailController.js';
+import {getAllEmails, postEmail} from './src/controllers/emailController.js';
 
 const app = express();
 dotenv.config({path: '.env.development'});
@@ -36,42 +36,7 @@ conn.connect((err) => {
 });
 
 app.get('/', (req, res) => getAllEmails(req, res, conn));
-
-// POST emails to database
-/**
- * * @saphalpdyl RESPONSE {
- * * hasError : boolean ,
- * * emailId : number (from the sql result)
- * *}
- */
-app.post('/post', (req, res) => {
-  const sqlPost = `INSERT INTO emails(sender , sender_email , content) 
-  VALUES ('${req.body.sender}' , '${req.body.sender_email}' ,
-   '${req.body.content}');`;
-
-  conn.query(sqlPost, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
-
-    if (err) {
-      res.status(400);
-
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-
-    res.send({
-      hasError: false,
-      emailId: result.insertId,
-    });
-  });
-});
+app.post('/post', (req, res) => postEmail(req, res, conn));
 
 // DELETE emails from database
 /**

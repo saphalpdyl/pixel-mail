@@ -11,6 +11,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "valid-jsdoc": "warn"
+    "valid-jsdoc": "warn",
+    "max-len": "off"
   }
 }

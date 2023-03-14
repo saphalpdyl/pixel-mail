@@ -1,13 +1,13 @@
 /**
- * @author @saphalpdyl
  *
  * Retrieves all emails related to user
  *
+ * @abstract
  * @param {Request} req
  * @param {Response} res
- * @param {Connection} conn
+ * @param {Connection} conn Connection to database
  *
- * @return {void}
+ * @return {[Object]} List of emails
  */
 const getAllEmails = async (req, res, conn) => {
   const sqlGetEmailQuery = 'SELECT * FROM emails';
@@ -25,4 +25,39 @@ const getAllEmails = async (req, res, conn) => {
   });
 };
 
-export {getAllEmails};
+/**
+ * POST email to database
+ *
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Connection} conn Connection to database
+ */
+const postEmail = async (req, res, conn) => {
+  const sqlPost = `INSERT INTO emails(sender , sender_email , reciever_email , body) 
+  VALUES ('${req.body.sender}' , '${req.body.sender_email}' , '${req.body.reciever_email}' ,
+   '${req.body.content}');`;
+  conn.query(sqlPost, (err, result) => {
+    res.header({
+      'Content-Type': 'application/json',
+    });
+
+    if (err) {
+      res.status(400);
+
+      res.send({
+        hasError: true,
+        code: err.code,
+      });
+      return;
+    }
+
+    res.status(200);
+
+    res.send({
+      hasError: false,
+      emailId: result.insertId,
+    });
+  });
+};
+
+export {getAllEmails, postEmail};
