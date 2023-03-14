@@ -24,7 +24,7 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
     if (lastClickedEmailId == null) return;
 
     const response = await fetch(
-        `http://localhost:8080/delete/${lastClickedEmailId}`,
+        `http://localhost:8080/${lastClickedEmailId}`,
         {method: 'DELETE'},
     );
 
