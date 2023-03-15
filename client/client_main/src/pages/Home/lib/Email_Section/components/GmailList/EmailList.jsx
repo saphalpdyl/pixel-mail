@@ -3,8 +3,8 @@ import {useContext} from 'react';
 import EmailListItem from './EmailListItem';
 import './styles/EmailList.css';
 import './styles/EmailListScrollBar.css';
-import emailContext from '../../../../contexts/EmailContext';
-import infoMenuContext from '../../../../contexts/InfoMenuContext';
+import emailContext from '@contexts/EmailContext';
+import infoMenuContext from '@contexts/InfoMenuContext';
 
 import InfoMenu from '../InfoMenu/InfoMenu';
 

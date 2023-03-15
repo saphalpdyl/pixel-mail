@@ -1,8 +1,8 @@
 import {useContext} from 'react';
 
 import EmailList from './components/GmailList/EmailList';
-import emailContext from '../../contexts/EmailContext';
-import infoMenuContext from '../../contexts/InfoMenuContext';
+import emailContext from '@contexts/EmailContext';
+import infoMenuContext from '@contexts/InfoMenuContext';
 
 import './EmailSection.css';
 
@@ -23,12 +23,7 @@ function EmailSection() {
           onClick={refreshEmails}
           className="refresh_icon_container center"
         >
-          <img
-            src="../public/refresh_icon.png"
-            alt="Refresh"
-            height={20}
-            width={20}
-          />
+          <img src="/refresh_icon.png" alt="Refresh" height={20} width={20} />
         </button>
       </div>
       {emails ? (

@@ -18,12 +18,10 @@ import jwt from 'jsonwebtoken';
 const authenticate = async (req, res, next) => {
   // No authorization header was provided
   if (!req.headers['authorization']) {
-    return res
-        .status(401)
-        .json({
-          err_code: 'ERR_TOKEN_REQUIRED',
-          message: 'Token was not provided',
-        });
+    return res.status(401).json({
+      err_code: 'ERR_TOKEN_REQUIRED',
+      message: 'Token was not provided',
+    });
   }
   const authHeader = req.headers['authorization'];
   const token = authHeader.split(' ')[1];
