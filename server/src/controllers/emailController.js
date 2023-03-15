@@ -38,7 +38,7 @@ const getAllEmails = async (req, res, conn) => {
  */
 const postEmail = async (req, res, conn) => {
   // Checking if required information is in the request body
-  if (!('reciever_email' in req.body)) {
+  if (!('receiver_email' in req.body)) {
     // If the body doesn't have the required keys
     return res.status(400).json({
       err_code: 'ERR_MALFORMED_REQ',
@@ -46,13 +46,13 @@ const postEmail = async (req, res, conn) => {
     });
   }
 
-  // sender, senderEmail, recieverEmail, content;
+  // sender, senderEmail, receiverEmail, content;
   const {email, username} = req.user;
 
   const sqlPost = postEmailQuery(
       username,
       email,
-      req.body.reciever_email,
+      req.body.receiver_email,
       req.body.content,
   );
   conn.query(sqlPost, (err, result) => {

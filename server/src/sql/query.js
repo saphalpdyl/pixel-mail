@@ -1,6 +1,6 @@
-const postEmailQuery = (sender, senderEmail, recieverEmail, content) =>
-  `INSERT INTO emails(sender , sender_email , reciever_email , content) VALUES ('${sender}' ,
-   '${senderEmail}' , '${recieverEmail}' ,'${content || ''}');`;
+const postEmailQuery = (sender, senderEmail, receiverEmail, content) =>
+  `INSERT INTO emails(sender , sender_email , receiver_email , content) VALUES ('${sender}' ,
+   '${senderEmail}' , '${receiverEmail}' ,'${content || ''}');`;
 
 const getEmailsQuery = (condition) =>
   `SELECT * FROM emails WHERE ${condition || 1}`;
