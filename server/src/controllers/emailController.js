@@ -25,9 +25,7 @@ const getAllEmails = async (req, res, conn) => {
       responseRows.push(parsedRow);
     });
 
-    res.status(200);
-    res.contentType('application/json');
-    res.send(responseRows);
+    res.json(responseRows);
   });
 };
 
@@ -39,28 +37,28 @@ const getAllEmails = async (req, res, conn) => {
  * @param {Connection} conn Connection to database
  */
 const postEmail = async (req, res, conn) => {
-  const sqlPost = postEmailQuery(req.body);
+  // Checking if required information is in the request body
+  if (!('reciever_email' in req.body)) {
+    // If the body doesn't have the required keys
+    return res.status(400).json({
+      err_code: 'ERR_MALFORMED_REQ',
+      message: 'The request body is incomplete',
+    });
+  }
+
+  // sender, senderEmail, recieverEmail, content;
+  const {email, username} = req.user;
+
+  const sqlPost = postEmailQuery(
+      username,
+      email,
+      req.body.reciever_email,
+      req.body.content,
+  );
   conn.query(sqlPost, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
+    if (err) return res.status(500).send({err_code: err.code});
 
-    if (err) {
-      res.status(400);
-
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-
-    res.send({
-      hasError: false,
-      emailId: result.insertId,
-    });
+    res.status(201).json({emailId: result.insertId});
   });
 };
 
@@ -75,23 +73,8 @@ const deleteEmail = async (req, res, conn) => {
   const sqlDeleteQuery = deleteEmailQuery(req.params.postid);
 
   conn.query(sqlDeleteQuery, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
-
-    if (err) {
-      res.status(400);
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-    res.send({
-      hasError: false,
-    });
+    if (err) return res.status(500).json({err_code: err.code});
+    res.json({});
   });
 };
 

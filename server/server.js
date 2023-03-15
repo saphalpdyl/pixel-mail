@@ -65,8 +65,8 @@ app.delete('/:postid', authenticate, (req, res) => deleteEmail(req, res, conn));
  *  ERR_TOKEN_PARSE_ERR ,
  *  ERR_INVALID_TOKEN ,
  *  ERR_TOKEN_EXPIRED ,
- *  ERR_TOKEN_REQUIRED;
-
+ *  ERR_TOKEN_REQUIRED ,
+ *  ERR_MALFORMED_REQ
  *
  * }
  */
