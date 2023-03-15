@@ -4,6 +4,14 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import {loginUser, registerUser} from './src/controllers/userController.js';
+import {authenticate} from './src/middlewares/auth.js';
+
+// Prevent server crash on error
+process.on('uncaughtException', (err) =>
+  console.error('Node caught and error : ', err),
+);
+
 // Controllers
 import {
   deleteEmail,
@@ -40,9 +48,30 @@ conn.connect((err) => {
   if (err) throw err;
 });
 
-app.get('/', (req, res) => getAllEmails(req, res, conn));
-app.post('/post', (req, res) => postEmail(req, res, conn));
-app.delete('/delete/:postid', (req, res) => deleteEmail(req, res, conn));
+// Email end points
+app.get('/', authenticate, (req, res) => getAllEmails(req, res, conn));
+app.post('/', authenticate, (req, res) => postEmail(req, res, conn));
+app.delete('/:postid', authenticate, (req, res) => deleteEmail(req, res, conn));
+
+// User end points
+/**
+ * ERR_CODE : {
+ *
+ *  ERR_USER_EXISTS_ALREADY ,
+ *  ERR_USER_NO_EXISTS ,
+ *  ERR_INVALID_PASSWORD ,
+ *  ERR_DB_ERROR ,
+ *  ERR_SERVER_ERROR ,
+ *  ERR_TOKEN_PARSE_ERR ,
+ *  ERR_INVALID_TOKEN ,
+ *  ERR_TOKEN_EXPIRED ,
+ *  ERR_TOKEN_REQUIRED;
+
+ *
+ * }
+ */
+app.post('/login', (req, res) => loginUser(req, res, conn));
+app.post('/register', (req, res) => registerUser(req, res, conn));
 
 app.listen(8080, () => {
   console.log('Listening on port : 8080');

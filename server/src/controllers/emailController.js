@@ -1,3 +1,9 @@
+import {
+  deleteEmailQuery,
+  getEmailsQuery,
+  postEmailQuery,
+} from '../sql/query.js';
+
 /**
  *
  * Retrieves all emails related to user
@@ -10,7 +16,7 @@
  * @return {[Object]} List of emails
  */
 const getAllEmails = async (req, res, conn) => {
-  const sqlGetEmailQuery = 'SELECT * FROM emails';
+  const sqlGetEmailQuery = getEmailsQuery();
   conn.query(sqlGetEmailQuery, (err, result) => {
     if (err) throw err;
     const responseRows = [];
@@ -33,9 +39,7 @@ const getAllEmails = async (req, res, conn) => {
  * @param {Connection} conn Connection to database
  */
 const postEmail = async (req, res, conn) => {
-  const sqlPost = `INSERT INTO emails(sender , sender_email , reciever_email , content) 
-  VALUES ('${req.body.sender}' , '${req.body.sender_email}' , '${req.body.reciever_email}' ,
-   '${req.body.content}');`;
+  const sqlPost = postEmailQuery(req.body);
   conn.query(sqlPost, (err, result) => {
     res.header({
       'Content-Type': 'application/json',
@@ -68,7 +72,7 @@ const postEmail = async (req, res, conn) => {
  * @param {Connection} conn Connection to database
  */
 const deleteEmail = async (req, res, conn) => {
-  const sqlDeleteQuery = `DELETE FROM emails WHERE id=${req.params.postid}`;
+  const sqlDeleteQuery = deleteEmailQuery(req.params.postid);
 
   conn.query(sqlDeleteQuery, (err, result) => {
     res.header({
