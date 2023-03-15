@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 
 import EmailList from './components/GmailList/EmailList';
 import emailContext from '@contexts/EmailContext';
@@ -7,12 +7,16 @@ import infoMenuContext from '@contexts/InfoMenuContext';
 import './EmailSection.css';
 
 function EmailSection() {
-  const {emails, refreshEmails} = useContext(emailContext);
+  const {emails, fetchEmails} = useContext(emailContext);
 
   const {positions, handleMouseMove, visibility} =
     useContext(infoMenuContext);
   const {visible, setVisible} = visibility;
   const {lastClickedPos, setLastClickedPos} = positions;
+
+  useEffect(() => {
+    fetchEmails();
+  }, []);
 
   return (
     <section onMouseMove={handleMouseMove} className="app_section_emails">
@@ -20,7 +24,7 @@ function EmailSection() {
         <span className="app_section_emails_title">Your Emails </span>
         <button
           title="Refresh"
-          onClick={refreshEmails}
+          onClick={fetchEmails}
           className="refresh_icon_container center"
         >
           <img src="/refresh_icon.png" alt="Refresh" height={20} width={20} />

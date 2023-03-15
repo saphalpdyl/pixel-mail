@@ -9,7 +9,7 @@ import infoMenuContext from '@contexts/InfoMenuContext';
 import InfoMenu from '../InfoMenu/InfoMenu';
 
 const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
-  const {refreshEmails} = useContext(emailContext);
+  const {fetchEmails} = useContext(emailContext);
   const {email, positions, showInfoMenu} = useContext(infoMenuContext);
   const {lastClickedEmailId, setLastClickedEmailId} = email;
   const {menuPos} = positions;
@@ -24,8 +24,13 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
     if (lastClickedEmailId == null) return;
 
     const response = await fetch(
-        `http://localhost:8080/${lastClickedEmailId}`,
-        {method: 'DELETE'},
+        `http://localhost:9000/${lastClickedEmailId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
     );
 
     const data = response.json();
@@ -35,7 +40,7 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
       return;
     }
 
-    refreshEmails();
+    fetchEmails();
   };
 
   return (
