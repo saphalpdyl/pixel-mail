@@ -1,7 +1,7 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 import Login from './routes/Login/Login';
-import HomeWrapper from '@src/routes/Home/HomeWrapper';
+import HomeWrapper from './routes/Home/HomeWrapper';
 
 function App() {
   const pageRouter = createBrowserRouter([

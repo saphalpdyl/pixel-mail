@@ -3,8 +3,10 @@ import {useContext} from 'react';
 import EmailListItem from './EmailListItem';
 import './styles/EmailList.css';
 import './styles/EmailListScrollBar.css';
+
 import emailContext from '@contexts/EmailContext';
 import infoMenuContext from '@contexts/InfoMenuContext';
+import authContext from '@contexts/authContext';
 
 import InfoMenu from '../InfoMenu/InfoMenu';
 
@@ -13,6 +15,7 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
   const {email, positions, showInfoMenu} = useContext(infoMenuContext);
   const {lastClickedEmailId, setLastClickedEmailId} = email;
   const {menuPos} = positions;
+  const {auth} = useContext(authContext);
 
   /** handleDelete
    * @saphalpdyl
@@ -28,7 +31,7 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
         {
           method: 'DELETE',
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${auth.token}`,
           },
         },
     );

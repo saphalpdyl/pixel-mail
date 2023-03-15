@@ -1,24 +1,26 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import Home from './Home';
-import ProtectedComponent from './lib/utils/protectedComponent';
-import validateToken from './lib/utils/validateToken';
+import ProtectedComponent from '@utils/protectedComponent';
+import authContext from '@contexts/authContext';
 
 const HomeWrapper = () => {
-  const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const {auth} = useContext(authContext);
 
   useEffect(() => {
-    validateToken((err, result) => {
-      if (err) return navigate('/login');
+    if (Object.keys(auth).length && !auth.authenticated) {
+      return navigate('/login');
+    }
+  }, [auth]);
 
-      setAuthenticated(true);
-      console.log(result);
-    });
-  }, []);
-
-  return <ProtectedComponent Component={Home} authenticated={authenticated} />;
+  return (
+    <ProtectedComponent
+      Component={Home}
+      authenticated={auth.authenticated || false}
+    />
+  );
 };
 
 export default HomeWrapper;

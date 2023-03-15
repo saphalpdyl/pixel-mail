@@ -4,11 +4,14 @@ import App from './App';
 import './index.css';
 
 import SettingsProvider from '@providers/SettingsProvider';
+import AuthProvider from '@providers/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
       <SettingsProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </SettingsProvider>
     </React.StrictMode>,
 );

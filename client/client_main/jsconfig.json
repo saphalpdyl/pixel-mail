@@ -3,7 +3,8 @@
     "baseUrl": "./src/",
     "paths": {
       "@contexts/*": ["./contexts/*"],
-      "@providers/*": ["./providers/*"]
+      "@providers/*": ["./providers/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "exclude": ["node_modules"]

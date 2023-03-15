@@ -1,4 +1,4 @@
-import formatDate from '../../../utils/dateFormatter.js';
+import formatDate from '@utils/dateFormatter';
 import settingsContext from '@contexts/SettingsContext.js';
 import {useContext} from 'react';
 
