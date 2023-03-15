@@ -5,11 +5,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-tabs": "error",
     "require-jsdoc": "off"
-    // "max-len": [
-    //   {
-    //     "code": "100"
-    //   }
-    // ]
   }
 }

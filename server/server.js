@@ -4,6 +4,21 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import {loginUser, registerUser} from './src/controllers/userController.js';
+import {authenticate} from './src/middlewares/auth.js';
+
+// Prevent server crash on error
+process.on('uncaughtException', (err) =>
+  console.error('Node caught and error : ', err),
+);
+
+// Controllers
+import {
+  deleteEmail,
+  getAllEmails,
+  postEmail,
+} from './src/controllers/emailController.js';
+
 const app = express();
 dotenv.config({path: '.env.development'});
 
@@ -13,6 +28,7 @@ app.use(bodyParser.json());
 app.use(
     cors({
       origin: '*',
+      credentials: true,
       methods: ['GET', 'POST', 'DELETE'],
       optionsSuccessStatus: 200,
     }),
@@ -26,101 +42,36 @@ const conn = createConnection({
   database: process.env.DB_NAME,
 });
 
-if (!conn) throw error('Failed to connect to DB');
+if (!conn) throw Error('Failed to connect to DB');
 
 conn.connect((err) => {
   if (err) throw err;
 });
 
-// GET all the current emails
-// * @saphalpdyl RESPONSE TYPE : List([...]) of all emails as json
-app.get('/', (_, res) => {
-  const sqlGetEmailQuery = 'SELECT * FROM emails';
-  conn.query(sqlGetEmailQuery, (err, result) => {
-    if (err) throw err;
-    const responseRows = [];
-    result.forEach((row) => {
-      const parsedRow = JSON.parse(JSON.stringify(row)); // Parsing to JSON
-      responseRows.push(parsedRow);
-    });
+// Email end points
+app.get('/', authenticate, (req, res) => getAllEmails(req, res, conn));
+app.post('/', authenticate, (req, res) => postEmail(req, res, conn));
+app.delete('/:postid', authenticate, (req, res) => deleteEmail(req, res, conn));
 
-    res.status(200);
-    res.contentType('application/json');
-    res.send(responseRows);
-  });
-});
-
-// Prevent users from posting in '/'
-app.post('/', (_, res) => {
-  res.send('This end point cannot be used for POST methods');
-});
-
-// POST emails to database
+// User end points
 /**
- * * @saphalpdyl RESPONSE {
- * * hasError : boolean ,
- * * emailId : number (from the sql result)
- * *}
+ * ERR_CODE : {
+ *
+ *  ERR_USER_EXISTS_ALREADY ,
+ *  ERR_USER_NO_EXISTS ,
+ *  ERR_INVALID_PASSWORD ,
+ *  ERR_DB_ERROR ,
+ *  ERR_SERVER_ERROR ,
+ *  ERR_TOKEN_PARSE_ERR ,
+ *  ERR_INVALID_TOKEN ,
+ *  ERR_TOKEN_EXPIRED ,
+ *  ERR_TOKEN_REQUIRED ,
+ *  ERR_MALFORMED_REQ
+ *
+ * }
  */
-app.post('/post', (req, res) => {
-  const sqlPost = `INSERT INTO emails(sender , sender_email , content) 
-  VALUES ('${req.body.sender}' , '${req.body.sender_email}' ,
-   '${req.body.content}');`;
-
-  conn.query(sqlPost, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
-
-    if (err) {
-      res.status(400);
-
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-
-    res.send({
-      hasError: false,
-      emailId: result.insertId,
-    });
-  });
-});
-
-// DELETE emails from database
-/**
- * * @saphalpdyl RESPONSE {
- * * hasError : boolean ,
- * * code ?: string
- * *}
- */
-app.delete('/delete/:postid', (req, res) => {
-  const sqlDeleteQuery = `DELETE FROM emails WHERE id=${req.params.postid}`;
-
-  conn.query(sqlDeleteQuery, (err, result) => {
-    res.header({
-      'Content-Type': 'application/json',
-    });
-
-    if (err) {
-      res.status(400);
-      res.send({
-        hasError: true,
-        code: err.code,
-      });
-      return;
-    }
-
-    res.status(200);
-    res.send({
-      hasError: false,
-    });
-  });
-});
+app.post('/login', (req, res) => loginUser(req, res, conn));
+app.post('/register', (req, res) => registerUser(req, res, conn));
 
 app.listen(8080, () => {
   console.log('Listening on port : 8080');
