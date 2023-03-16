@@ -24,7 +24,7 @@ PIXEL Mail server uses the following environment variables for configuration:
 
 Make sure to set these variables before running the server. You can use a `.env` file to store these variables locally or set them directly in your hosting environment.
 
-## MySQL Database Structure
+## MariaDB  Structure
 ### Table 1: Users
 
 This table stores information about registered users of the PIXEL Mail application.
@@ -55,4 +55,4 @@ PIXEL Mail is a web application that uses React for the front-end development, a
 
 - Front-end: **React**
 - Back-end: **Node.js** with **Express**
-- Database: **MySQL**
+- Database: **MariaDB**
