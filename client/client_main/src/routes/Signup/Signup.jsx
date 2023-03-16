@@ -15,8 +15,12 @@ const Signup = () => {
   const [passwordStrong, setPasswordStrong] = useState(false);
   const [showNoUserErr, setShowNoUserErr] = useState(false);
 
-  const {userSignUp} = useContext(authContext);
+  const {userSignUp, auth} = useContext(authContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth.authenticated) return navigate('/');
+  }, [auth]);
 
   useEffect(() => {
     if (
