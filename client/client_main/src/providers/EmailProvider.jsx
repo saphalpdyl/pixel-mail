@@ -1,32 +1,31 @@
+import {useContext, useState} from 'react';
+
 import emailContext from '../contexts/EmailContext';
-import {useEffect, useState} from 'react';
+import authContext from '@contexts/authContext';
 
 function EmailProvider(props) {
-  // eslint-disable-next-line no-unused-vars
   const [emails, setEmails] = useState();
+  const {auth} = useContext(authContext);
 
   const fetchEmails = async () => {
-    const response = await fetch('http://localhost:8080/', {
+    const response = await fetch('http://localhost:9000/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth.token}`,
       },
     });
+
+    if (response.status !== 200) {
+      return setEmails([]);
+    }
 
     const emails = await response.json();
     setEmails(emails);
   };
 
-  useEffect(() => {
-    fetchEmails();
-  }, []);
-
-  const refreshEmails = async () => {
-    await fetchEmails();
-  };
-
   return (
-    <emailContext.Provider value={{emails, refreshEmails}}>
+    <emailContext.Provider value={{emails, fetchEmails}}>
       {props.children}
     </emailContext.Provider>
   );

@@ -1,5 +1,5 @@
 import infoMenuContext from '../contexts/InfoMenuContext';
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 /**
  * @author @saphalpdyl

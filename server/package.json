@@ -8,20 +8,25 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./server.js localhost 8080",
+    "dev": "nodemon ./server.js localhost 9000",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
-    "eslint": "^8.35.0",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jsdoc": "^40.0.2",
     "jest": "^29.5.0",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.4"
   }
 }

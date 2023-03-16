@@ -1,4 +1,4 @@
-import formatDate from '../lib/utils/dateFormatter.js';
+import formatDate from '../utils/dateFormatter.js';
 
 const testDate = '2023-03-08 13:36:23';
 

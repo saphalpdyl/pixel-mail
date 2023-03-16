@@ -1,7 +1,8 @@
 .app_section_emails {
-  flex: 8;
+  flex: 6;
   padding: 3em 5em;
   overflow-y: auto;
+  border-left: 1px solid #00000012;
 }
 
 .app_section_emails_title {
