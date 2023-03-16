@@ -47,7 +47,7 @@ This table stores information about the emails sent and received by the users.
 | `receiver_email` | VARCHAR(255) | Email address of the receiver |
 | `content` | TEXT | The body of the email |
 | `sent_at` | DATETIME | The date and time the email was sent |
-| `sender` | INT | Foreign key referencing the `id` column in the `Users` table representing the sender of the email |
+| `sender` | VARCHAR(255) | The display name of the sender |
 
 
 ## Tech Stack
