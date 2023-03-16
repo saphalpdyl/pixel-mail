@@ -16,10 +16,10 @@ This application is a work-in-progress, and I'm constantly making improvements a
 
 PIXEL Mail server uses the following environment variables for configuration:
 
-- **DB_HOST**: the hostname of the MySQL database server
-- **DB_USERNAME**: the username for accessing the MySQL database
-- **DB_PASSWORD**: the password for accessing the MySQL database
-- **DB_NAME**: the name of the MySQL database
+- **DB_HOST**: the hostname of the MariaDB server
+- **DB_USERNAME**: the username for accessing the MariaDB
+- **DB_PASSWORD**: the password for accessing the MariaDB
+- **DB_NAME**: the name of the MariaDB
 - **JWT_SECRET**: the secret key for JSON Web Tokens (JWT) used for authentication and authorization
 
 Make sure to set these variables before running the server. You can use a `.env` file to store these variables locally or set them directly in your hosting environment.
