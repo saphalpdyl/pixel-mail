@@ -17,7 +17,6 @@ function EmailProvider(props) {
     });
 
     if (response.status !== 200) {
-      console.error(response.err_code);
       return setEmails([]);
     }
 
