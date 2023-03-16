@@ -1,13 +1,28 @@
-import EmailSection from './lib/Email_Section/EmailSection';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+import Login from './routes/Login/Login';
+import HomeWrapper from './routes/Home/HomeWrapper';
+import Signup from './routes/Signup/Signup';
 
 function App() {
+  const pageRouter = createBrowserRouter([
+    {
+      path: '/',
+      element: <HomeWrapper />,
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/signup',
+      element: <Signup />,
+    },
+  ]);
+
   return (
     <div className="App">
-      <div className="nav"></div>
-      <div className="app_main">
-        <EmailSection />
-        <section className="app_section_options"></section>
-      </div>
+      <RouterProvider router={pageRouter} />
     </div>
   );
 }

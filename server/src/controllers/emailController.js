@@ -16,7 +16,9 @@ import {
  * @return {[Object]} List of emails
  */
 const getAllEmails = async (req, res, conn) => {
-  const sqlGetEmailQuery = getEmailsQuery();
+  const sqlGetEmailQuery = getEmailsQuery(
+      `sender_email='${req.user.email}' OR receiver_email='${req.user.email}'`,
+  );
   conn.query(sqlGetEmailQuery, (err, result) => {
     if (err) throw err;
     const responseRows = [];

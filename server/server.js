@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import {loginUser, registerUser} from './src/controllers/userController.js';
 import {authenticate} from './src/middlewares/auth.js';
+import {validateToken} from './src/controllers/authController.js';
 
 // Prevent server crash on error
 process.on('uncaughtException', (err) =>
@@ -72,7 +73,8 @@ app.delete('/:postid', authenticate, (req, res) => deleteEmail(req, res, conn));
  */
 app.post('/login', (req, res) => loginUser(req, res, conn));
 app.post('/register', (req, res) => registerUser(req, res, conn));
+app.get('/validate', authenticate, validateToken);
 
-app.listen(8080, () => {
-  console.log('Listening on port : 8080');
+app.listen(9000, () => {
+  console.log('Listening on port : 9000');
 });

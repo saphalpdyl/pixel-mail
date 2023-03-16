@@ -1,0 +1,74 @@
+.signup_main {
+  background-color: var(--secondary-dark);
+  color: var(--primary-green);
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("/company_icon_darkgray.png");
+}
+
+.form_cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0rem;
+  height: 90vh;
+}
+
+.signup_cont {
+  flex: 1;
+}
+
+.signup_quote {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.signup_quote > span:nth-child(2) {
+  font-size: 128px;
+  letter-spacing: 4rem;
+}
+
+.form_item input {
+  backdrop-filter: blur(4px);
+}
+
+.signup_quote > span {
+  font-size: 48px;
+  font-family: "Phudu", cursive;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+.signup_form {
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.header_cont {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.input_cont {
+  display: flex;
+  flex-direction: row;
+}
+
+.error_text {
+  color: var(--secondary-red);
+  font-size: 16px;
+}

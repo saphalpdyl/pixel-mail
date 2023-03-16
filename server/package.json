@@ -8,7 +8,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./server.js localhost 8080",
+    "dev": "nodemon ./server.js localhost 9000",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {

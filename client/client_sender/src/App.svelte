@@ -12,7 +12,7 @@
       };
 
       try {
-        const response = await fetch('http://localhost:8080/post', {
+        const response = await fetch('http://localhost:9000/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
