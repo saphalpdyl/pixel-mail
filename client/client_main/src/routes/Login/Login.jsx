@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 
 import authContext from '@contexts/authContext';
 
@@ -73,35 +73,38 @@ const Login = () => {
             <h1>Welcome Back! Log In</h1>
             <div className="form_item">
               <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                style={{
-                  borderColor: credentialsStatus.email ?
-                    '' :
-                    'var(--secondary-red)',
-                }}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <div className="input_cont">
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  style={{
+                    borderColor: credentialsStatus.email ?
+                      '' :
+                      'var(--secondary-red)',
+                  }}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
-
             <div className="form_item">
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                style={{
-                  borderColor: credentialsStatus.password ?
-                    '' :
-                    'var(--secondary-red)',
-                }}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="input_cont">
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  style={{
+                    borderColor: credentialsStatus.password ?
+                      '' :
+                      'var(--secondary-red)',
+                  }}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
             </div>
-
             <input type="submit" value="Login" disabled={!validCredentials} />
+            <Link to="/signup">Or register for a new account</Link>
           </form>
         </div>
       </div>

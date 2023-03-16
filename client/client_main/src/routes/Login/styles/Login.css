@@ -6,6 +6,9 @@
   background-color: var(--secondary-dark);
   color: var(--primary-green);
 
+  background-size: 32px 16px;
+  background-image: url("/company_icon.png");
+
   height: 100%;
 }
 
@@ -50,6 +53,7 @@ h1 {
   font-family: "Phudu", cursive;
   letter-spacing: 5px;
   font-weight: 200;
+  font-size: 36px;
 }
 
 .login_form {
@@ -72,7 +76,8 @@ h1 {
   width: 100%;
 }
 
-.form_item > input {
+.input_cont > input {
+  flex: 1;
   outline: none;
   border: 1px solid var(--gray-20);
   border-radius: 3px;
@@ -87,7 +92,7 @@ h1 {
   background-color: transparent;
 }
 
-.form_item > input:focus {
+.input_cont > input:focus {
   border: 1px solid var(--secondary-tangerine);
 }
 
@@ -112,7 +117,8 @@ input[type="submit"] {
   transition: 150ms background-color, 150ms color, border 250ms;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+input[type="submit"]:focus {
   background-color: var(--primary-green);
   color: var(--primary-blue);
 }
@@ -124,5 +130,4 @@ input[type="submit"]:disabled {
 
 input[type="submit"]:disabled:hover {
   background-color: inherit;
-  color: var(--primary-white);
 }

@@ -55,10 +55,10 @@ const AuthProvider = (props) => {
    * @param {string} password - User's password
    *
    * @example
-   * login("johndoe@email.com" , "abcd1234")
-   *    .then(isSuccess => ...)
+   * userLogin("johndoe@email.com" , "abcd1234")
+   *    .then(err => ...)
    *
-   * @return {boolean}
+   * @return {string | null}
    */
   const userLogin = async (email, password) => {
     const rawResponse = await fetch('http://localhost:9000/login', {
@@ -104,8 +104,42 @@ const AuthProvider = (props) => {
     return null;
   };
 
+  /**
+   * Try to login using email and password
+   *
+   * @param {string} username - User's name
+   * @param {string} email - User's email
+   * @param {string} password - User's password
+   *
+   * @example
+   * userSignUp("John Doe" , "johndoe@email.com" , "abcd1234")
+   *    .then(err => ...)
+   *
+   * @return {string | null}
+   */
+  const userSignUp = async (username, email, password) => {
+    const rawResponse = await fetch('http://localhost:9000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
+
+    if (rawResponse.status !== 201) {
+      const err = await rawResponse.json();
+      return err.err_code;
+    }
+
+    return null;
+  };
+
   return (
-    <authContext.Provider value={{auth, userLogin}}>
+    <authContext.Provider value={{auth, userLogin, userSignUp}}>
       {props.children}
     </authContext.Provider>
   );

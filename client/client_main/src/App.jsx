@@ -2,17 +2,21 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 import Login from './routes/Login/Login';
 import HomeWrapper from './routes/Home/HomeWrapper';
+import Signup from './routes/Signup/Signup';
 
 function App() {
   const pageRouter = createBrowserRouter([
     {
       path: '/',
       element: <HomeWrapper />,
-      errorElement: <div>Error Occured</div>,
     },
     {
       path: '/login',
       element: <Login />,
+    },
+    {
+      path: '/signup',
+      element: <Signup />,
     },
   ]);
 
