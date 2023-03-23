@@ -1,10 +1,18 @@
 import {useContext} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 import authContext from '@contexts/authContext';
 import './OptionsSection.css';
 
 function OptionsSection() {
-  const {auth} = useContext(authContext);
+  const {auth, userLogOut} = useContext(authContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    if ( userLogOut() ) {
+      navigate('/login');
+    }
+  };
 
   return (
     <section className="app_section_options">
@@ -23,6 +31,14 @@ function OptionsSection() {
             <span className='options_header_body_email'>
               {auth.userInfo.email}
             </span>
+          </div>
+          <div className='options_header_logout_cont' onClick={handleLogOut}>
+            <img
+              src="/logout_icon.png"
+              alt="Logout"
+              height={24}
+              width={24}
+            />
           </div>
         </div>
       </div>
