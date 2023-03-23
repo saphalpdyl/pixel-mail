@@ -1,0 +1,104 @@
+.app_section_options {
+  height : 100%;
+
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.options_header_cont{
+  flex : 0.75;
+
+  padding : 1.5rem;
+
+  display : flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.options_header {
+  
+  border : 1px solid rgba(0,0,0,0.15);
+  border-radius: 16px;
+
+  height : 100%;
+  width: 100%;
+
+  display : flex;
+
+  overflow: hidden;
+}
+
+.options_header_icon_cont {
+  flex : 1;
+  background-color: var(--primary-blue);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor : pointer;
+}
+
+.options_header_body_cont {
+  flex : 8;
+  display: flex;
+}
+
+.options_header_logout_cont {
+  flex : 1;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition : 200ms background-color ;
+  opacity : 0.5;
+
+  cursor : pointer;
+}
+
+.options_header_logout_cont:hover {
+  background-color: var(--gray-40);
+}
+
+.options_header_body_cont > span {
+  padding : 0rem 1.5rem;
+}
+
+.options_header_body_username { 
+  flex : 1 ;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-family: 'Inter' , sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.options_header_body_email { 
+  flex : 1;
+  
+  display : inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-family: 'JetBrains Mono' , monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  color : rgba(0,0,0,0.6);
+}
+
+.options_body_cont {
+  flex : 9;
+
+  display : flex;
+  flex-direction: column;
+
+  width: 100%;
+}

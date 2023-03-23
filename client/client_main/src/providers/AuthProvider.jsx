@@ -49,17 +49,17 @@ const AuthProvider = (props) => {
   };
 
   /**
-   * Try to login using email and password
-   *
-   * @param {string} email - User's email
-   * @param {string} password - User's password
-   *
-   * @example
-   * userLogin("johndoe@email.com" , "abcd1234")
-   *    .then(err => ...)
-   *
-   * @return {string | null}
-   */
+    * Try to login using email and password
+    * @async
+    * @param {string} email - User's email
+    * @param {string} password - User's password
+    *
+    * @example
+    * userLogin("johndoe@email.com" , "abcd1234")
+    *    .then(err => ...)
+    *
+    * @return {string | null}
+    */
   const userLogin = async (email, password) => {
     const rawResponse = await fetch('http://localhost:9000/login', {
       method: 'POST',
@@ -105,18 +105,19 @@ const AuthProvider = (props) => {
   };
 
   /**
-   * Try to login using email and password
-   *
-   * @param {string} username - User's name
-   * @param {string} email - User's email
-   * @param {string} password - User's password
-   *
-   * @example
-   * userSignUp("John Doe" , "johndoe@email.com" , "abcd1234")
-   *    .then(err => ...)
-   *
-   * @return {string | null}
-   */
+    * Try to login using email and password
+    * @async
+    *
+    * @param {string} username - User's name
+    * @param {string} email - User's email
+    * @param {string} password - User's password
+    *
+    * @example
+    * userSignUp("John Doe" , "johndoe@email.com" , "abcd1234")
+    *    .then(err => ...)
+    *
+    * @return {string | null}
+    */
   const userSignUp = async (username, email, password) => {
     const rawResponse = await fetch('http://localhost:9000/register', {
       method: 'POST',
@@ -138,8 +139,25 @@ const AuthProvider = (props) => {
     return null;
   };
 
+  /**
+    * Log out of the current auth
+    *
+    * @example
+    * userLogOut();
+    *
+    * @return {boolean} If the logout was success - True
+    */
+  const userLogOut = () => {
+    localStorage.removeItem('token');
+    setAuth({
+      authenticated: false,
+    });
+
+    return true;
+  };
+
   return (
-    <authContext.Provider value={{auth, userLogin, userSignUp}}>
+    <authContext.Provider value={{auth, userLogin, userSignUp, userLogOut}}>
       {props.children}
     </authContext.Provider>
   );
