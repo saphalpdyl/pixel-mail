@@ -1,0 +1,15 @@
+
+.email_fallback {
+  height : 100%;
+  
+  display : flex;
+  align-items : center;
+  justify-content: center;
+     
+  font-family: 'Phudu' , cursive;
+  font-weight: 200;
+  font-size: 32px;
+  letter-spacing: 5px;
+
+  color : var(--primary-gray);
+}
