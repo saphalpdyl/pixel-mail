@@ -1,0 +1,9 @@
+CREATE TABLE emails (
+  id INT NOT NULL AUTO_INCREMENT,
+  sender_email VARCHAR(255) NOT NULL ,
+  receiver_email VARCHAR(255) NOT NULL , 
+  content TEXT , 
+  sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP , 
+  sender VARCHAR(255) NOT NULL , 
+  PRIMARY KEY(id)
+);

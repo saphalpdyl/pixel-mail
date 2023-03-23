@@ -13,6 +13,7 @@ process.on('uncaughtException', (err) =>
   console.error('Node caught and error : ', err),
 );
 
+
 // Controllers
 import {
   deleteEmail,
@@ -41,6 +42,7 @@ const conn = createConnection({
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  port: 3306,
 });
 
 if (!conn) throw Error('Failed to connect to DB');
@@ -48,6 +50,7 @@ if (!conn) throw Error('Failed to connect to DB');
 conn.connect((err) => {
   if (err) throw err;
 });
+
 
 // Email end points
 app.get('/', authenticate, (req, res) => getAllEmails(req, res, conn));
