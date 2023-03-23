@@ -1,4 +1,5 @@
 import EmailSection from './lib/Email_Section/EmailSection';
+import OptionsSection from './lib/Options_Section/OptionsSection';
 import './Home.css';
 
 import EmailProvider from '@providers/EmailProvider';
@@ -10,7 +11,7 @@ const Home = () => {
       <InfoMenuProvider>
         <div className="home">
           <div className="app_main">
-            <section className="app_section_options"></section>
+            <OptionsSection />
             <EmailSection />
           </div>
         </div>
