@@ -52,6 +52,7 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
         menuPos={menuPos}
         visible={visible}
         handleDelete={handleDelete}
+
       />
       {emails.map((email) => (
         <EmailListItem

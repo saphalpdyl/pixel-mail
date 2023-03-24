@@ -1,6 +1,8 @@
+import {useContext} from 'react';
+
 import formatDate from '@utils/dateFormatter';
 import settingsContext from '@contexts/SettingsContext.js';
-import {useContext} from 'react';
+import authContext from '@contexts/authContext';
 
 const EmailListItem = ({
   email,
@@ -9,6 +11,7 @@ const EmailListItem = ({
   setLastClickedEmailId,
 }) => {
   const {settings} = useContext(settingsContext);
+  const {auth} = useContext(authContext);
 
   return (
     <div
@@ -22,6 +25,16 @@ const EmailListItem = ({
         <div className="metadata_container">
           <div className="email_sender_info">
             <span className="email_sender_name">{email.sender}</span>
+            <div className='email_direction_cont'>
+              <img
+                style={{
+                  transform: `rotate(${email.sender_email == auth.userInfo.email ? 135 : -45}deg)`,
+                }}
+                src='/inout_icon.png'
+                height={16}
+                width={16}
+              />
+            </div>
             <div
               className="info_icon_container"
               title="More"
