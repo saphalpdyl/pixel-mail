@@ -1,7 +1,6 @@
 .app_main {
   display: flex;
   flex-direction: row;
-  gap: 2em;
 
   overflow-y: auto;
 }

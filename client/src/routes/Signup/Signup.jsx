@@ -146,7 +146,7 @@ const Signup = () => {
               </div>
             </div>
 
-            <input type="submit" value="Sign up" disabled={!validationStatus} />
+            <input className='account_form_submit' type="submit" value="Sign up" disabled={!validationStatus} />
             <Link to="/login">Already Signed up ? Log In instead</Link>
           </form>
         </div>

@@ -2,6 +2,7 @@ import {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import authContext from '@contexts/authContext';
+import EmailPost from './components/EmailPost/EmailPost';
 import './OptionsSection.css';
 
 function OptionsSection() {
@@ -43,6 +44,9 @@ function OptionsSection() {
         </div>
       </div>
       <div className='options_body_cont'>
+      </div>
+      <div className='options_body_post_cont'>
+        <EmailPost />
       </div>
     </section>
   );

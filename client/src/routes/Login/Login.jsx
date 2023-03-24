@@ -103,7 +103,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            <input type="submit" value="Login" disabled={!validCredentials} />
+            <input className='account_form_submit' type="submit" value="Login" disabled={!validCredentials} />
             <Link to="/signup">Or register for a new account</Link>
           </form>
         </div>

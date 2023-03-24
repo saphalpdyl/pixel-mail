@@ -24,8 +24,26 @@ function EmailProvider(props) {
     setEmails(emails);
   };
 
+  const postEmails = async (email, body) => {
+    const rawResponse = await fetch('http://localhost:9000/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth.token}`,
+      },
+      body: JSON.stringify({
+        receiver_email: email,
+        content: body,
+      }),
+    });
+
+    if (rawResponse.status !== 201) return false;
+
+    return true;
+  };
+
   return (
-    <emailContext.Provider value={{emails, fetchEmails}}>
+    <emailContext.Provider value={{emails, fetchEmails, postEmails}}>
       {props.children}
     </emailContext.Provider>
   );

@@ -95,10 +95,17 @@
 }
 
 .options_body_cont {
-  flex : 9;
+  flex : 3;
 
   display : flex;
   flex-direction: column;
 
+  width: 100%;
+}
+
+.options_body_post_cont {
+  flex : 6;
+
+  padding : 0rem 1.5rem;
   width: 100%;
 }

@@ -96,7 +96,7 @@ h1 {
   border: 1px solid var(--secondary-tangerine);
 }
 
-input[type="submit"] {
+.account_form_submit {
   height: 3rem;
   width: 100%;
 
@@ -117,17 +117,17 @@ input[type="submit"] {
   transition: 150ms background-color, 150ms color, border 250ms;
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+.account_form_submit:hover,
+.account_form_submit:focus {
   background-color: var(--primary-green);
   color: var(--primary-blue);
 }
 
-input[type="submit"]:disabled {
+.account_form_submit:disabled {
   border: 1px solid var(--gray-10);
   color: var(--gray-30);
 }
 
-input[type="submit"]:disabled:hover {
+.account_form_submit:disabled:hover {
   background-color: inherit;
 }
