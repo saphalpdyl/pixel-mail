@@ -6,7 +6,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "../../.eslintrc.json"
+    "../.eslintrc.json"
   ],
   "plugins": ["react"],
   "rules": {
