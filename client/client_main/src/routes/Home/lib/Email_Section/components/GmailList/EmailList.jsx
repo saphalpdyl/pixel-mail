@@ -10,7 +10,7 @@ import authContext from '@contexts/authContext';
 
 import InfoMenu from '../InfoMenu/InfoMenu';
 
-const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
+const EmailList = ({emails, visible, setVisible}) => {
   const {fetchEmails} = useContext(emailContext);
   const {email, positions, showInfoMenu} = useContext(infoMenuContext);
   const {lastClickedEmailId, setLastClickedEmailId} = email;
@@ -58,9 +58,9 @@ const EmailList = ({emails, setLastClickedPos, visible, setVisible}) => {
         <EmailListItem
           emailId={email.id}
           handleInfoClick={showInfoMenu}
+          setLastClickedEmailId={setLastClickedEmailId}
           key={email.id}
           email={email}
-          setLastClickedEmailId={setLastClickedEmailId}
         />
       ))}
     </div>
