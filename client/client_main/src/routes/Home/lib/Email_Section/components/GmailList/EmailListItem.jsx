@@ -13,6 +13,8 @@ const EmailListItem = ({
   const {settings} = useContext(settingsContext);
   const {auth} = useContext(authContext);
 
+  const isSender = email.sender_email == auth.userInfo.email;
+
   return (
     <div
       onClick={() => setLastClickedEmailId(emailId)}
@@ -24,11 +26,12 @@ const EmailListItem = ({
       <div className="email_main_container">
         <div className="metadata_container">
           <div className="email_sender_info">
-            <span className="email_sender_name">{email.sender}</span>
+            <span className="email_sender_name">{isSender ? 'You' : email.sender}</span>
+            <span className='email_other_email'>&lt;{isSender ? email.receiver_email : email.sender_email}&gt;</span>
             <div className='email_direction_cont'>
               <img
                 style={{
-                  transform: `rotate(${email.sender_email == auth.userInfo.email ? 135 : -45}deg)`,
+                  transform: `rotate(${ isSender ? 135 : -45}deg)`,
                 }}
                 src='/inout_icon.png'
                 height={16}

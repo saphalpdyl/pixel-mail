@@ -66,8 +66,22 @@
 
 /* Sender's name */
 .email_sender_name {
-  font-family: "Gemunu Libre", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-size: var(--font-title);
+}
+
+/* Other's email */
+.email_other_email {
+  display : inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size : 10px;
+  letter-spacing: 1px;
+
+  color : rgba(0,0,0,0.5);
 }
 
 /* Div that encapsulates the actual <img /> */
