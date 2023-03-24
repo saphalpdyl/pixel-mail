@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@600&family=Inter:wght@100;300;400&family=JetBrains+Mono:wght@100;200;400&family=Phudu:wght@300;500&family=Space+Grotesk:wght@300;400;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+font-family: 'Gemunu Libre', sans-serif;
+font-family: 'Inter', sans-serif;
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Phudu', cursive;
+font-family: 'Space Grotesk', sans-serif;
+*/
+
+:root {
+  --font-base: 12px;
+  --font-title: 16px;
+
+  --text-gray-800: #404040;
+  --text-gray-200: #9c8e8e;
+
+  --border-light: rgba(0, 0, 0, 13%);
+
+  --primary-dark: #001011;
+  --secondary-dark: #0f0a0a;
+  --primary-white: #fffbfc;
+  --primary-blue: #0e1428;
+  --secondary-tangerine: #f18805;
+  --secondary-red: #bf211e;
+  --primary-green: #74d3ae;
+
+  --primary-gray: #d8d8d8;
+  --gray-80: rgba(216, 216, 216, 0.8);
+  --gray-60: rgba(216, 216, 216, 0.6);
+  --gray-40: rgba(216, 216, 216, 0.4);
+  --gray-30: rgba(216, 216, 216, 0.3);
+  --gray-20: rgba(216, 216, 216, 0.2);
+  --gray-10: rgba(216, 216, 216, 0.1);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root,
+.App,
+.home,
+.app_main {
+  height: 100%;
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}

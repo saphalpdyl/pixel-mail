@@ -1,0 +1,10 @@
+.app_main {
+  display: flex;
+  flex-direction: row;
+
+  overflow-y: auto;
+}
+
+.app_section_options {
+  flex: 4;
+}
