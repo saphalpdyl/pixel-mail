@@ -16,7 +16,7 @@ import './EmailFallback.css';
 function EmailFallback() {
   console.log('Falling back');
   return <div className="email_fallback">
-    Nothing&apos; here !
+    Nothing&apos;s here !
   </div>;
 }
 
