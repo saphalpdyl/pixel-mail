@@ -29,7 +29,7 @@ function EmailPost() {
         <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
       </div>
       <div className='email_post_email_submit_cont'>
-          <img src="/post_icon_light.png" alt="Post" height={32} width={32}/>
+        <img src="/post_icon_light.png" alt="Post" height={32} width={32}/>
       </div>
     </div>
     <div className='email_post_body'>

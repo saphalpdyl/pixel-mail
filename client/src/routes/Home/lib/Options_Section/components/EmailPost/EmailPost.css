@@ -83,6 +83,8 @@
   width: 100%;
   resize: none;
 
+  background-color: rgba(116,211,174,0.06);
+
   padding: 0.5rem;
 
   font-size: 16px;
