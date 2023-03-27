@@ -1,0 +1,32 @@
+.options_settings {
+
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap : 1rem;
+
+  color : var(--primary-green);
+  
+
+  height: 100%;
+}
+
+.options_settings > div {
+  display : flex;
+  justify-content: space-between;
+
+  font-family: 'Gemunu Libre' , san-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  
+  width: 100%;
+}
+
+.options_settings_hoursys_cont {
+
+}
+
+.options_settings_datecode_cont {
+
+}

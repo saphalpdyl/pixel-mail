@@ -5,7 +5,7 @@ function SettingsProvider(props) {
   const [settings, setSettings] = useState({
     time: {
       dateCode: 'en-US',
-      is12hour: true,
+      is12hour: false,
     },
   });
 

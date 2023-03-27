@@ -39,7 +39,6 @@ const getAllEmails = async (req, res, conn) => {
  * @param {Connection} conn Connection to database
  */
 const postEmail = async (req, res, conn) => {
-  console.log(req.body);
   // Checking if required information is in the request body
   if (!('receiver_email' in req.body)) {
     // If the body doesn't have the required keys

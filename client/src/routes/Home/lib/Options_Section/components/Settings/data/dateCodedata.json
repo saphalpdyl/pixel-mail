@@ -1,0 +1,14 @@
+{
+  "data" : [
+    {
+      "code" : "en-US",
+      "bgColor" : "var(--primary-blue)",
+      "color" : "var(--primary-green)"
+    } ,
+    {
+      "code" : "ne-NP",
+      "bgColor" : "var(--secondary-red)",
+      "color" : "white"
+    }
+  ]
+}
