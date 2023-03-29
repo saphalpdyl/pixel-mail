@@ -56,3 +56,14 @@ PIXEL Mail is a web application that uses React for the front-end development, a
 - Front-end: **React**
 - Back-end: **Node.js** with **Express**
 - Database: **MariaDB**
+
+## Screenshots
+
+### Home
+![Screenshot from 2023-03-29 22-30-41](https://user-images.githubusercontent.com/69297872/228610818-38e38462-4b92-497c-b4a6-261df17240f3.png)
+
+### Login
+![Screenshot from 2023-03-29 22-29-19](https://user-images.githubusercontent.com/69297872/228610684-0cf2166f-5d50-4f79-8826-02388ebf19bb.png)
+
+### Register
+![Screenshot from 2023-03-29 22-29-11](https://user-images.githubusercontent.com/69297872/228610731-532a4cc9-5d2d-45f6-8dfb-58716391747f.png)
