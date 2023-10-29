@@ -1,10 +1,9 @@
-An open-source web application that I have built as a learning project using React and Node.js. As a student and self-taught programmer, I have created this application to improve my skills and gain practical experience in web development and SQL.
-
 <p align="center">
   <img height="256px" src="https://user-images.githubusercontent.com/69297872/225576519-1128edd8-f3aa-4787-9d13-47fb1dc7bc93.png" />
 </p>
 
 # PIXEL Mail
+An open-source web application that I have built as a learning project using React and Node.js. As a student and self-taught programmer, I have created this application to improve my skills and gain practical experience in web development and SQL.
 
 PIXEL Mail is a simple email service that allows users to send and receive emails through a clean and modern user interface. It's a great project for anyone who is looking to learn how to build a full-stack web application from scratch.
 
